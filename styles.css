@@ -3,3 +3,26 @@
     margin: 0;
     box-sizing: border-box;
 }
+
+#mainTitle {
+    text-align: center;
+}
+
+#sketchBox {
+    display: flex;
+    margin: 0 auto;
+    width: 40vw;
+    aspect-ratio: 1/1;
+    border: solid 2px silver;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.row {
+    flex: 1;
+    border: solid 1px blue;
+}
