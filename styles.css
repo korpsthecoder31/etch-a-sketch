@@ -8,12 +8,17 @@
     text-align: center;
 }
 
+#buttonBox {
+    display: flex;
+    justify-content: center;
+}
+
 #sketchBox {
     display: flex;
     margin: 0 auto;
     width: 40vw;
     aspect-ratio: 1/1;
-    border: solid 2px silver;
+    border: solid 1px black;
 }
 
 .column {
@@ -24,5 +29,9 @@
 
 .row {
     flex: 1;
-    border: solid 1px blue;
+    border: solid 0.5px grey;
+}
+
+#black {
+    background-color: black;
 }
