@@ -18,33 +18,47 @@ function createGrid(pixelNum) {
             column.appendChild(newRow)
         }
     })
+
+    const squares = document.querySelectorAll(".row")
+
+    squares.forEach(function(square) {
+        square.addEventListener("mouseover", () => 
+            square.setAttribute("id", "black")
+        )
+    })
+
 }
 
-const squares = document.querySelectorAll(".row")
-
-squares.forEach(function(square) {
-    square.addEventListener("mouseover", () => 
-        square.setAttribute("id", "black")
-    )
-})
-
-const newGrid = document.querySelector("#changeGridButton")
-newGrid.addEventListener("click", setGrid)
-
-const modal = document.querySelector("#changeGridBox")
-
-function setGrid() {
+function createNewGrid() {
     modal.showModal()
 
-    const input = document.querySelector("#gridInput")
+    newDimensions.textContent = `${range.value} x ${range.value}`
+    range.addEventListener("input", () =>
+        newDimensions.textContent = `${range.value} x ${range.value}`
+    )
 
     const accept = document.querySelector("#acceptButton")
-    accept.addEventListener("click", () =>
-        console.log(input.value)
-    )
+    accept.addEventListener("click", () => {
+        sketchBox.textContent = ""
+        createGrid(range.value)
+        modal.close()
+    })
     
     const cancel = document.querySelector("#cancelButton")
     cancel.addEventListener("click", () =>
         modal.close()
     )
 }
+
+
+
+const newGrid = document.querySelector("#changeGridButton")
+newGrid.addEventListener("click", createNewGrid)
+
+const modal = document.querySelector("#changeGridBox")
+
+const range = document.querySelector("#gridInput")
+
+const newDimensions = document.querySelector("#gridDimensions")
+
+
