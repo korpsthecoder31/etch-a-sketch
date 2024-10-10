@@ -51,11 +51,23 @@ function gridColor(color) {
 
     squares.forEach(function(square) {
         square.addEventListener("mouseover", () => 
-            square.setAttribute("id", color)
+            square.style.backgroundColor = color
         )
     })
 }
 
+function getRainbowColor() {
+    const squares = document.querySelectorAll(".row")
+
+    squares.forEach(function(square) {
+        square.addEventListener("mouseover", () => {
+            const a = (Math.floor(Math.random()*256))
+            const b = (Math.floor(Math.random()*256))
+            const c = (Math.floor(Math.random()*256))
+            square.style.backgroundColor = `rgb(${a}, ${b}, ${c})`
+        })
+    })
+}
 
 const newGrid = document.querySelector("#changeGridButton")
 
@@ -64,6 +76,11 @@ const modal = document.querySelector("#changeGridBox")
 const range = document.querySelector("#gridInput")
 
 const newDimensions = document.querySelector("#gridDimensions")
+
+
+
+
+const rainbowButton = document.querySelector("#setGridRainbow")
 
 const blackButton = document.querySelector("#setGridBlack")
 
@@ -74,12 +91,19 @@ const redButton = document.querySelector("#setGridRed")
 
 newGrid.addEventListener("click", resetGrid)
 
+
+
+
 blackButton.addEventListener("click", () => {
     currentColor = "black"
-    gridColor("black")
+    gridColor(currentColor)
 })
 
 redButton.addEventListener("click", () => {
     currentColor = "red"
-    gridColor("red")
+    gridColor(currentColor)
+})
+
+rainbowButton.addEventListener("click", () => {
+    getRainbowColor()
 })
