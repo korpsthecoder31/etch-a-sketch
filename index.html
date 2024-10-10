@@ -10,12 +10,17 @@
 <body>
     <h1 id="mainTitle">Etch-a-Sketch</h1>
     
-    <div id="buttonBox">
-        <button id="changeGridButton">Change Grid</button>
+    <div id="mainBody">
+        <div id="buttonBox">
+            <button id="changeGridButton">Change Grid</button>
+            <button id="setGridBlack">Black</button>
+            <button id="setGridRed">Red</button>
+            <button id="setGridRainbow">Rainbow Mode</button>
+        </div>
+    
+        <div id="sketchBox"></div>
     </div>
     
-    <div id="sketchBox"></div>
-
     <dialog id="changeGridBox">
         <h1>Provide New Demensions</h1>
         <div>
@@ -24,6 +29,7 @@
             <button id="cancelButton">Cancel</button>
         </div>
         <p id="gridDimensions"></p>
+    </dialog>
     
 </body>
 </html>

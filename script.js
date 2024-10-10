@@ -1,5 +1,7 @@
 const sketchBox = document.querySelector("#sketchBox")
 
+let currentColor = "black";
+
 createGrid(16)
 
 function createGrid(pixelNum) {
@@ -19,17 +21,11 @@ function createGrid(pixelNum) {
         }
     })
 
-    const squares = document.querySelectorAll(".row")
-
-    squares.forEach(function(square) {
-        square.addEventListener("mouseover", () => 
-            square.setAttribute("id", "black")
-        )
-    })
-
+    gridColor(currentColor)
 }
 
-function createNewGrid() {
+
+function resetGrid() {
     modal.showModal()
 
     newDimensions.textContent = `${range.value} x ${range.value}`
@@ -50,10 +46,18 @@ function createNewGrid() {
     )
 }
 
+function gridColor(color) {
+    const squares = document.querySelectorAll(".row")
+
+    squares.forEach(function(square) {
+        square.addEventListener("mouseover", () => 
+            square.setAttribute("id", color)
+        )
+    })
+}
 
 
 const newGrid = document.querySelector("#changeGridButton")
-newGrid.addEventListener("click", createNewGrid)
 
 const modal = document.querySelector("#changeGridBox")
 
@@ -61,4 +65,21 @@ const range = document.querySelector("#gridInput")
 
 const newDimensions = document.querySelector("#gridDimensions")
 
+const blackButton = document.querySelector("#setGridBlack")
 
+const redButton = document.querySelector("#setGridRed")
+
+
+
+
+newGrid.addEventListener("click", resetGrid)
+
+blackButton.addEventListener("click", () => {
+    currentColor = "black"
+    gridColor("black")
+})
+
+redButton.addEventListener("click", () => {
+    currentColor = "red"
+    gridColor("red")
+})
