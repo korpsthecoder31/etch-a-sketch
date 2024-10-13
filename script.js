@@ -21,7 +21,14 @@ function createGrid(pixelNum) {
         }
     })
 
-    gridColor(currentColor)
+    if (currentColor === "random") {
+        getRainbowColor()
+    }
+    else if (currentColor === "white") {
+        currentColor = "black"
+        gridColor(currentColor)
+    }
+    else gridColor(currentColor)
 }
 
 
@@ -50,9 +57,9 @@ function gridColor(color) {
     const squares = document.querySelectorAll(".row")
 
     squares.forEach(function(square) {
-        square.addEventListener("mouseover", () => 
+        square.addEventListener("mouseover", () => {
             square.style.backgroundColor = color
-        )
+        })
     })
 }
 
@@ -67,6 +74,9 @@ function getRainbowColor() {
             square.style.backgroundColor = `rgb(${a}, ${b}, ${c})`
         })
     })
+
+    currentColor = "random"
+
 }
 
 function clearGrid() {
@@ -77,6 +87,18 @@ function clearGrid() {
     })
 }
 
+// function shadowMode() {
+//     const squares = document.querySelectorAll(".row")
+
+//     squares.forEach(function(square) {
+//         square.addEventListener("mouseover", () => {
+//                 if (+square.style.opacity <= 0.9) {
+//                     square.style.opacity = +square.style.opacity + 0.1
+//                 }
+//             })
+//     })
+// }
+
 const newGrid = document.querySelector("#changeGridButton")
 
 const modal = document.querySelector("#changeGridBox")
@@ -86,13 +108,17 @@ const range = document.querySelector("#gridInput")
 const newDimensions = document.querySelector("#gridDimensions")
 
 
+newGrid.addEventListener("click", resetGrid)
 
 
-const rainbowButton = document.querySelector("#setGridRainbow")
 
 const blackButton = document.querySelector("#setGridBlack")
 
 const redButton = document.querySelector("#setGridRed")
+
+const rainbowButton = document.querySelector("#setGridRainbow")
+
+const shadowButton = document.querySelector("#setGridShadow")
 
 const eraserButton = document.querySelector("#setGridWhite")
 
@@ -100,11 +126,7 @@ const clearButton = document.querySelector("#clearGrid")
 
 
 
-
-newGrid.addEventListener("click", resetGrid)
-
-
-
+// EVENT LISTENERS
 
 blackButton.addEventListener("click", () => {
     currentColor = "black"
@@ -127,10 +149,11 @@ eraserButton.addEventListener("click", () => {
 
 clearButton.addEventListener("click", () => {
     
-    if (currentColor === "white") {
-        currentColor = "black"
-        gridColor(currentColor)
-    }
-    
-    clearGrid()
+    const columnCount = document.querySelectorAll(".column")
+    sketchBox.textContent = ""        
+    createGrid(columnCount.length)
 })
+
+// shadowButton.addEventListener("click", () => {
+//     shadowMode()
+// })
