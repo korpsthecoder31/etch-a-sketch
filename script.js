@@ -69,6 +69,14 @@ function getRainbowColor() {
     })
 }
 
+function clearGrid() {
+    const squares = document.querySelectorAll(".row")
+
+    squares.forEach(function(square) {
+        square.style.backgroundColor = "white"
+    })
+}
+
 const newGrid = document.querySelector("#changeGridButton")
 
 const modal = document.querySelector("#changeGridBox")
@@ -85,6 +93,8 @@ const rainbowButton = document.querySelector("#setGridRainbow")
 const blackButton = document.querySelector("#setGridBlack")
 
 const redButton = document.querySelector("#setGridRed")
+
+const clearButton = document.querySelector("#clearGrid")
 
 
 
@@ -106,4 +116,8 @@ redButton.addEventListener("click", () => {
 
 rainbowButton.addEventListener("click", () => {
     getRainbowColor()
+})
+
+clearButton.addEventListener("click", () => {
+    clearGrid()
 })
