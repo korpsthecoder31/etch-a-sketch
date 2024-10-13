@@ -94,6 +94,8 @@ const blackButton = document.querySelector("#setGridBlack")
 
 const redButton = document.querySelector("#setGridRed")
 
+const eraserButton = document.querySelector("#setGridWhite")
+
 const clearButton = document.querySelector("#clearGrid")
 
 
@@ -118,6 +120,17 @@ rainbowButton.addEventListener("click", () => {
     getRainbowColor()
 })
 
+eraserButton.addEventListener("click", () => {
+    currentColor = "white"
+    gridColor(currentColor)
+})
+
 clearButton.addEventListener("click", () => {
+    
+    if (currentColor === "white") {
+        currentColor = "black"
+        gridColor(currentColor)
+    }
+    
     clearGrid()
 })
