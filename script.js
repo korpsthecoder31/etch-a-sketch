@@ -4,6 +4,8 @@ let currentColor = "black";
 
 createGrid(16)
 
+// FUNCTION TO CREATE GRID
+
 function createGrid(pixelNum) {
 
     for(i = 0; i < pixelNum; i++) {
@@ -31,6 +33,7 @@ function createGrid(pixelNum) {
     else gridColor(currentColor)
 }
 
+// FUNCTION TO CREATE GRID VIA MODAL & SLIDER
 
 function resetGrid() {
     modal.showModal()
@@ -53,6 +56,8 @@ function resetGrid() {
     )
 }
 
+// FUNCTION TO SET COLOR - CURRENTLY ONLY BLACK AND RED
+
 function gridColor(color) {
     const squares = document.querySelectorAll(".row")
 
@@ -62,6 +67,8 @@ function gridColor(color) {
         })
     })
 }
+
+// FUNCTION TO SET TO RAINBOW MODE
 
 function getRainbowColor() {
     const squares = document.querySelectorAll(".row")
@@ -79,6 +86,8 @@ function getRainbowColor() {
 
 }
 
+// 'ERASES' GRID TO WHITE
+
 function clearGrid() {
     const squares = document.querySelectorAll(".row")
 
@@ -86,6 +95,8 @@ function clearGrid() {
         square.style.backgroundColor = "white"
     })
 }
+
+// UNUSED FUNCTION SHADOW
 
 // function shadowMode() {
 //     const squares = document.querySelectorAll(".row")
@@ -99,6 +110,9 @@ function clearGrid() {
 //     })
 // }
 
+
+// DEFINE VARIABLES IN MODAL
+
 const newGrid = document.querySelector("#changeGridButton")
 
 const modal = document.querySelector("#changeGridBox")
@@ -111,6 +125,7 @@ const newDimensions = document.querySelector("#gridDimensions")
 newGrid.addEventListener("click", resetGrid)
 
 
+// DEFINE BUTTONS
 
 const blackButton = document.querySelector("#setGridBlack")
 
